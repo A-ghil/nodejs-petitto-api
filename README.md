@@ -28,6 +28,23 @@ npm run start
 npm run dev
 ```
 
+# Rotas
+
+https://petitto-api.herokuapp.com/api/authentication
+https://petitto-api.herokuapp.com/api/users
+https://petitto-api.herokuapp.com/api/users/:id
+https://petitto-api.herokuapp.com/api/users
+https://petitto-api.herokuapp.com/api/users/:id
+https://petitto-api.herokuapp.com/api/users/:id
+
+https://petitto-api.herokuapp.com/api/pets
+https://petitto-api.herokuapp.com/api/pets/:id
+https://petitto-api.herokuapp.com/api/pets
+https://petitto-api.herokuapp.com/api/pets/:id
+https://petitto-api.herokuapp.com/api/pets/:id
+
+https://petitto-api.herokuapp.com/api/pets/:id/adopted
+
 ## Links  
 [nodejs](https://nodejs.dev/)  
 [jwt](https://jwt.io/)  
