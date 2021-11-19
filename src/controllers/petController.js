@@ -40,14 +40,14 @@ const update = async (req, res) => {
     if (!isValidObjectId(id)) return res.status(400).json({ message: 'Código do pet informado é inválido!' })
     const pet = await Pet.findById(id)
 
-    if ( pet.petDonor !== userAuthenticated ) return res.status(403).json({ message: 'Não é possivel realizar está operação!' })
-    
+    if (pet.petDonor !== userAuthenticated) return res.status(403).json({ message: 'Não é possivel realizar está operação!' })
+
     await Pet.findByIdAndUpdate(id, {
         name,
         age,
         photo
     })
-    
+
     return res.status(204).json()
 
 
@@ -63,11 +63,11 @@ const remove = async (req, res) => {
     if (!userAuthenticated) return res.status(401).json({ message: 'Usuário não autorizado!' })
 
     if (!isValidObjectId(id)) return res.status(400).json({ message: 'Código do pet informado é inválido!' })
-    
+
     const pet = await Pet.findById(id)
 
-    if ( pet.petDonor !== userAuthenticated ) return res.status(403).json({ message: 'Não é possivel realizar está operação!' })
-    
+    if (pet.petDonor !== userAuthenticated) return res.status(403).json({ message: 'Não é possivel realizar está operação!' })
+
     await Pet.findByIdAndRemove(id)
 
     return res.status(204).json()
@@ -85,6 +85,9 @@ const selectById = async (req, res) => {
     if (!isValidObjectId(id)) return res.status(400).json({ message: 'Código do pet informado é inválido!' })
 
     const pet = await Pet.findById(id)
+    if (pet === null) {
+        return res.status(404).json({ message: 'Pet com id informado não existe!' })
+    }
     return res.status(200).json(pet)
 }
 
@@ -105,8 +108,8 @@ const adopted = async (req, res) => {
             date: new Date()
         }
     })
-    
-    return res.status(200).json({message:'Pet adotado com sucesso!'})
+
+    return res.status(200).json({ message: 'Pet adotado com sucesso!' })
 }
 
 module.exports = {

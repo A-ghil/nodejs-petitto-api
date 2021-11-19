@@ -53,9 +53,9 @@ const remove = async (req, res) => {
     }
     if (!userAuthenticated) return res.status(401).json({ message: 'Usuário não autorizado!' })
     if (!isValidObjectId(id)) return res.status(400).json({ message: 'Código do usuário informado é inválido!' })
-    
+
     if (userAuthenticated !== id) return res.status(403).json({ message: 'Não é possivel realizar está operação!' })
-    
+
     await User.findByIdAndRemove(id)
     await Pet.deleteOne({ petDonor: id })
 
@@ -83,11 +83,25 @@ const selectById = async (req, res) => {
     return res.status(200).json(user)
 }
 
+const listPetsUser = async (req, res) => {
+    const { id } = req.params
+
+    if (!isValidObjectId(id)) return res.status(400).json({ message: 'Código do usuário informado é inválido!' })
+
+
+    const listPet = await Pet.find({
+        petDonor: id
+    })
+
+    return res.status(201).json(listPet)
+}
+
 
 module.exports = {
     create,
     update,
     remove,
     select,
-    selectById
+    selectById,
+    listPetsUser
 }
