@@ -12,7 +12,7 @@ const authenticate = async (req, res) => {
     if (!user) return res.status(400).json({ message: 'Credenciais inválidas!' })
     const token = jwt({ id: user._id, email })
     
-    return res.status(200).json({ token})
+    return res.status(200).json({ token, id: user._id })
 }
 
 
