@@ -11,9 +11,11 @@ const create = async (req, res) => {
     const hashedPassword = hashGenerate(password)
     
 
-    const isUserExists = await User.findOne({ username })
+    const isFoundUsername = await User.findOne({ username })
+    if (isFoundUsername) return res.status(400).json({ message: 'Usuário informado já existe!' })
 
-    if (isUserExists) return res.status(400).json({ message: 'Username informado já existe!' })
+    const isFoundEmail = await User.findOne({ email })
+    if (isFoundEmail) return res.status(400).json({ message: 'Usuário informado já existe!' })
 
     const user = await User.create({
         name,
