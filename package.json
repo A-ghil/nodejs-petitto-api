@@ -1,7 +1,7 @@
 {
   "name": "petitto-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "> Para instalar o projeto precisa ter o *nodejs* instalado na sua máquina após feito isso utilize o comando *npm install* ou *npm i*",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -20,5 +20,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A-ghil/nodejs-petitto-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/A-ghil/nodejs-petitto-api/issues"
+  },
+  "homepage": "https://github.com/A-ghil/nodejs-petitto-api#readme"
 }

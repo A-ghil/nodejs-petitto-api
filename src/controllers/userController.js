@@ -9,6 +9,11 @@ const create = async (req, res) => {
     if (!email) return res.status(400).json({ message: 'Campo de e-mail não informado!' })
     if (!password) return res.status(400).json({ message: 'Campo de senha não informado!' })
     const hashedPassword = hashGenerate(password)
+    
+
+    const isUserExists = await User.findOne({ username })
+
+    if (isUserExists) return res.status(400).json({ message: 'Username informado já existe!' })
 
     const user = await User.create({
         name,

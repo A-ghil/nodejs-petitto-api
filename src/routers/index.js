@@ -17,8 +17,6 @@ router.delete('/users/:id', userController.remove);
 router.post('/pets', petController.create);
 router.put('/pets/:id', petController.update);
 router.get('/pets', petController.select);
-//todo: arrumar consulta por id invalido (null)
-
 router.get('/pets/:id', petController.selectById);
 router.delete('/pets/:id', petController.remove);
 
